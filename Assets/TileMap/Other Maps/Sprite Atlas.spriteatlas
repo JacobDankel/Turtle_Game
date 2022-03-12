@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprite Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 4b092b3f541f6f94b8b0c625f6bc27fe, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 529963497984148590, guid: 4b092b3f541f6f94b8b0c625f6bc27fe, type: 3}
+  - {fileID: 5833242781937580256, guid: 4b092b3f541f6f94b8b0c625f6bc27fe, type: 3}
+  - {fileID: -1033419857109748007, guid: 4b092b3f541f6f94b8b0c625f6bc27fe, type: 3}
+  - {fileID: 5869390911096805573, guid: 4b092b3f541f6f94b8b0c625f6bc27fe, type: 3}
+  - {fileID: 7618276735546950901, guid: 4b092b3f541f6f94b8b0c625f6bc27fe, type: 3}
+  - {fileID: -272788958844490991, guid: 4b092b3f541f6f94b8b0c625f6bc27fe, type: 3}
+  - {fileID: -1077449062047402020, guid: 4b092b3f541f6f94b8b0c625f6bc27fe, type: 3}
+  - {fileID: -2893305202344157927, guid: 4b092b3f541f6f94b8b0c625f6bc27fe, type: 3}
+  - {fileID: -7594271317735344374, guid: 4b092b3f541f6f94b8b0c625f6bc27fe, type: 3}
+  - {fileID: 7638441341560955528, guid: 4b092b3f541f6f94b8b0c625f6bc27fe, type: 3}
+  - {fileID: -4548737425684386070, guid: 4b092b3f541f6f94b8b0c625f6bc27fe, type: 3}
+  - {fileID: 369447431317194092, guid: 4b092b3f541f6f94b8b0c625f6bc27fe, type: 3}
+  - {fileID: 9216054275019124890, guid: 4b092b3f541f6f94b8b0c625f6bc27fe, type: 3}
+  - {fileID: 6625678266700622358, guid: 4b092b3f541f6f94b8b0c625f6bc27fe, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Gray Cave Set 5_10
+  - Gray Cave Set 5_11
+  - Gray Cave Set 5_12
+  - Gray Cave Set 5_13
+  - Gray Cave Set 5_9
+  - Gray Cave Set 5_8
+  - Gray Cave Set 5_5
+  - Gray Cave Set 5_4
+  - Gray Cave Set 5_7
+  - Gray Cave Set 5_6
+  - Gray Cave Set 5_1
+  - Gray Cave Set 5_0
+  - Gray Cave Set 5_3
+  - Gray Cave Set 5_2
+  m_RenderDataMap: {}
+  m_Tag: Sprite Atlas
+  m_IsVariant: 0

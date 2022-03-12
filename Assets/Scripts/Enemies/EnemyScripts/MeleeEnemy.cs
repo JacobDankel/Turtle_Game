@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MeleeEnemy : EnemyClass
 {
-    [SerializeField]
-    private Animator anim;
+    //[SerializeField]
+    //private Animator anim;
     [SerializeField]
     private CapsuleCollider2D rangeColliderRight, rangeColliderLeft;
     [SerializeField]
@@ -18,8 +18,8 @@ public class MeleeEnemy : EnemyClass
     {
         rb2d = GetComponent<Rigidbody2D>();
         tran = GetComponent<Transform>();
-        boxCollider = GetComponent<BoxCollider2D>();
-        anim = GetComponent<Animator>();
+        capCollider = GetComponent<CapsuleCollider2D>();
+        //anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -62,7 +62,7 @@ public class MeleeEnemy : EnemyClass
         if (!isCurrentlyAttacking)
         {
             isCurrentlyAttacking = true;
-            anim.SetTrigger("AttackRight");
+            //anim.SetTrigger("AttackRight");
             yield return new WaitForSeconds(attackDelayTime);
             isCurrentlyAttacking = false;
         }
@@ -73,7 +73,7 @@ public class MeleeEnemy : EnemyClass
         if (!isCurrentlyAttacking)
         {
             isCurrentlyAttacking = true;
-            anim.SetTrigger("AttackLeft");
+            //anim.SetTrigger("AttackLeft");
             yield return new WaitForSeconds(attackDelayTime);
             isCurrentlyAttacking = false;
         }

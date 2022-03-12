@@ -53,9 +53,9 @@ public class PlayerMovement : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal");
         if (horizontalMove != 0)
         {
-            anim.SetBool("Moving", true);
+            //anim.SetBool("Moving", true);
         }
-        else anim.SetBool("Moving", false);
+        else //anim.SetBool("Moving", false);
         if (horizontalMove > 0)
         {
             direction = 1;
@@ -66,14 +66,18 @@ public class PlayerMovement : MonoBehaviour
         }
         if (IsGrounded())
         {
-            anim.SetBool("Grounded", true);
+            //anim.SetBool("Grounded", true);
         }
-        else anim.SetBool("Grounded", false);
+        else //anim.SetBool("Grounded", false);
 
+        if (Input.GetButtonDown("Jump"))
+        {
+            Debug.Log("trying to jump");
+        }
         jumping();
 
-        anim.SetFloat("Speed", horizontalMove);
-        anim.SetFloat("Direction", direction);
+        //anim.SetFloat("Speed", horizontalMove);
+        //anim.SetFloat("Direction", direction);
     }
 
     private void FixedUpdate()
@@ -104,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
     private void jumping()
     {
         //initial jump
+
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             isJumping = true;
@@ -117,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
             if (jumpTimeCounter > 0)
             {
                 controller.velocity = Vector2.up * jumpForce;
-                jumpTimeCounter -= Time.deltaTime;
+                jumpTimeCounter = jumpTimeCounter - Time.deltaTime;
             }
         }
         if (Input.GetButtonUp("Jump"))
@@ -140,9 +145,10 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D rHit = Physics2D.Raycast(rightExtent, Vector2.down, jumpCushion, groundLayer);
         if (lHit.collider != null || rHit.collider != null)
         {
+            //Debug.Log("hit something");
             return true;
         }
-        return false;
+        else return false;
     }
 
     private void takeDamage(float _damage)

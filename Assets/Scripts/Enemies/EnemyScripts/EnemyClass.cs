@@ -9,7 +9,7 @@ public class EnemyClass : MonoBehaviour
     [SerializeField]
     protected Transform tran;
     [SerializeField]
-    protected BoxCollider2D boxCollider;
+    protected CapsuleCollider2D capCollider;
     [SerializeField]
     protected LayerMask groundLayer, damageLayer, playerLayer;
     [SerializeField]
@@ -24,7 +24,7 @@ public class EnemyClass : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         tran = GetComponent<Transform>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        capCollider = GetComponent<CapsuleCollider2D>();
     }
     
     protected void moveRB()
@@ -35,7 +35,7 @@ public class EnemyClass : MonoBehaviour
 
     protected void takeDamage(float _damage)
     {
-        if (boxCollider.IsTouchingLayers(damageLayer))
+        if (capCollider.IsTouchingLayers(damageLayer))
         {
             health -= _damage;
         }
@@ -61,8 +61,8 @@ public class EnemyClass : MonoBehaviour
     */
     protected bool atCorner()
     {
-        Vector3 leftExtent = boxCollider.bounds.center + Vector3.left * boxCollider.bounds.extents.x; //left center point of boxCollider
-        Vector3 rightExtent = boxCollider.bounds.center + Vector3.right * boxCollider.bounds.extents.x; //right center point of boxCollider
+        Vector3 leftExtent = capCollider.bounds.center + Vector3.left * capCollider.bounds.extents.x; //left center point of boxCollider
+        Vector3 rightExtent = capCollider.bounds.center + Vector3.right * capCollider.bounds.extents.x; //right center point of boxCollider
 
         RaycastHit2D lHit = Physics2D.Raycast(leftExtent, Vector2.down, leftExtent.y + extraRaycastLength, groundLayer);
         RaycastHit2D rHit = Physics2D.Raycast(rightExtent, Vector2.down, rightExtent.y + extraRaycastLength, groundLayer);
@@ -97,7 +97,7 @@ public class EnemyClass : MonoBehaviour
 
     protected bool seesPlayer()
     {
-        RaycastHit2D visionLine = Physics2D.Raycast(boxCollider.bounds.center, transform.right, viewRange, playerLayer);
+        RaycastHit2D visionLine = Physics2D.Raycast(capCollider.bounds.center, transform.right, viewRange, playerLayer);
 
         if (visionLine.collider)
         {
@@ -109,8 +109,8 @@ public class EnemyClass : MonoBehaviour
 
     protected bool seesWall()
     {
-        Vector3 bottomOfCollider = new Vector3(boxCollider.bounds.center.x, boxCollider.bounds.center.y - boxCollider.bounds.extents.y);
-        float range = boxCollider.bounds.extents.x + .1f;
+        Vector3 bottomOfCollider = new Vector3(capCollider.bounds.center.x, capCollider.bounds.center.y - capCollider.bounds.extents.y);
+        float range = capCollider.bounds.extents.x + .1f;
 
         RaycastHit2D wallVisionLine = Physics2D.Raycast(bottomOfCollider, transform.right, range, groundLayer);
 

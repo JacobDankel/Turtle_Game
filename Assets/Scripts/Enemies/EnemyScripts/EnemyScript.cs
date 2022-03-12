@@ -10,7 +10,7 @@ public class EnemyScript : EnemyClass
     {
         rb2d = GetComponent<Rigidbody2D>();
         tran = GetComponent<Transform>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        capCollider = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
