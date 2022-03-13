@@ -51,7 +51,7 @@ public class EnemyClass : MonoBehaviour
         if (atCorner() || seesWall())
         {
             //Debug.Log("Changing Direction");
-            direction = -direction;
+            //direction = -direction;
             flip();
         }
     }
@@ -83,8 +83,9 @@ public class EnemyClass : MonoBehaviour
         else return false;
     }
 
-    private void flip()
+    protected void flip()
     {
+        direction = -direction;
         if (direction == 1)
         {
             tran.Rotate(0f, 180f, 0f);

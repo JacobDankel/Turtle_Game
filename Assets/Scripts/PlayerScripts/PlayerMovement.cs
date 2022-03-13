@@ -72,7 +72,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            Debug.Log("trying to jump");
+            //Debug.Log("trying to jump");
+            
         }
         jumping();
 
