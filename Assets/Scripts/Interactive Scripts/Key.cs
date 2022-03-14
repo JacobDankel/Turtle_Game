@@ -8,4 +8,9 @@ public class Key : Item
     {
         itemName = "Key";
     }
+
+    public override void effect()
+    {
+        return;
+    }
 }

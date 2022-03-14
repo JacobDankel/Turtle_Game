@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy Damage
+  - Player Spawn Point
   layers:
   - Default
   - TransparentFX
@@ -42,11 +43,11 @@ TagManager:
   - name: Interactables
     uniqueID: 885837619
     locked: 0
-  - name: Ground
-    uniqueID: 3458211541
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 3458211541
     locked: 0
   - name: Player
     uniqueID: 744510489

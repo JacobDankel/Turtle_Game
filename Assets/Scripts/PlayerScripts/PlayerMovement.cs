@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -41,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<Rigidbody2D>();
         capCollider = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
+        
+        // For loading a new scene. spawnOnPoint is a function in this script.
+        DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += spawnOnPoint;
 
         inventory = new Inventory();
 
@@ -75,8 +80,9 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("trying to jump");
             
         }
-        jumping();
 
+        jumping();
+        Interact();
         //anim.SetFloat("Speed", horizontalMove);
         //anim.SetFloat("Direction", direction);
     }
@@ -91,16 +97,23 @@ public class PlayerMovement : MonoBehaviour
         inventory.addItem(item);
     }
 
-    /*
-     * Not necessarily a bug, but you can hold E and run over stuff and it will work. wasn't responsive with getButtonDown
-     */
-    public bool isInteracting()
+    public void Interact()
     {
-        if (Input.GetButton("Interact"))
+        if (Input.GetButtonDown("Interact"))
         {
-            return true;
+            
+            RaycastHit2D[] hitObjects = Physics2D.BoxCastAll(tran.position, capCollider.size, 0, Vector2.zero);
+            
+            if (hitObjects.Length > 0)
+            {
+                foreach (RaycastHit2D hit in hitObjects)
+                if (hit.transform.GetComponent<Interactable>())
+                {
+                    hit.transform.GetComponent<Interactable>().Interact();
+                }
+            }
         }
-        else return false;
+
     }
 
     /*
@@ -167,5 +180,15 @@ public class PlayerMovement : MonoBehaviour
     public float getCurrentHealth()
     {
         return currentHealth;
+    }
+    /*
+    private void OnLevelWasLoaded(int level)
+    {
+        spawnOnPoint();
+    }
+    */
+    void spawnOnPoint(Scene scene, LoadSceneMode mode)
+    {
+        transform.position = GameObject.FindWithTag("Player Spawn Point").transform.position;
     }
 }
