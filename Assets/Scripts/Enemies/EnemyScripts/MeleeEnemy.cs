@@ -18,7 +18,7 @@ public class MeleeEnemy : EnemyClass
     {
         rb2d = GetComponent<Rigidbody2D>();
         tran = GetComponent<Transform>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        capCollider = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
     }
 
@@ -62,7 +62,7 @@ public class MeleeEnemy : EnemyClass
         if (!isCurrentlyAttacking)
         {
             isCurrentlyAttacking = true;
-            anim.SetTrigger("AttackRight");
+            anim.SetTrigger("Attack");
             yield return new WaitForSeconds(attackDelayTime);
             isCurrentlyAttacking = false;
         }
@@ -72,8 +72,9 @@ public class MeleeEnemy : EnemyClass
     {
         if (!isCurrentlyAttacking)
         {
+            flip();
             isCurrentlyAttacking = true;
-            anim.SetTrigger("AttackLeft");
+            anim.SetTrigger("Attack");
             yield return new WaitForSeconds(attackDelayTime);
             isCurrentlyAttacking = false;
         }

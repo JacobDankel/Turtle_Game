@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -41,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<Rigidbody2D>();
         capCollider = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
+        
+        // For loading a new scene. spawnOnPoint is a function in this script.
+        DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += spawnOnPoint;
 
         inventory = new Inventory();
 
@@ -53,9 +58,9 @@ public class PlayerMovement : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal");
         if (horizontalMove != 0)
         {
-            anim.SetBool("Moving", true);
+            //anim.SetBool("Moving", true);
         }
-        else anim.SetBool("Moving", false);
+        else //anim.SetBool("Moving", false);
         if (horizontalMove > 0)
         {
             direction = 1;
@@ -66,14 +71,20 @@ public class PlayerMovement : MonoBehaviour
         }
         if (IsGrounded())
         {
-            anim.SetBool("Grounded", true);
+            //anim.SetBool("Grounded", true);
         }
-        else anim.SetBool("Grounded", false);
+        else //anim.SetBool("Grounded", false);
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            //Debug.Log("trying to jump");
+            
+        }
 
         jumping();
-
-        anim.SetFloat("Speed", horizontalMove);
-        anim.SetFloat("Direction", direction);
+        Interact();
+        //anim.SetFloat("Speed", horizontalMove);
+        //anim.SetFloat("Direction", direction);
     }
 
     private void FixedUpdate()
@@ -86,16 +97,23 @@ public class PlayerMovement : MonoBehaviour
         inventory.addItem(item);
     }
 
-    /*
-     * Not necessarily a bug, but you can hold E and run over stuff and it will work. wasn't responsive with getButtonDown
-     */
-    public bool isInteracting()
+    public void Interact()
     {
-        if (Input.GetButton("Interact"))
+        if (Input.GetButtonDown("Interact"))
         {
-            return true;
+            
+            RaycastHit2D[] hitObjects = Physics2D.BoxCastAll(tran.position, capCollider.size, 0, Vector2.zero);
+            
+            if (hitObjects.Length > 0)
+            {
+                foreach (RaycastHit2D hit in hitObjects)
+                if (hit.transform.GetComponent<Interactable>())
+                {
+                    hit.transform.GetComponent<Interactable>().Interact();
+                }
+            }
         }
-        else return false;
+
     }
 
     /*
@@ -104,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
     private void jumping()
     {
         //initial jump
+
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             isJumping = true;
@@ -117,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
             if (jumpTimeCounter > 0)
             {
                 controller.velocity = Vector2.up * jumpForce;
-                jumpTimeCounter -= Time.deltaTime;
+                jumpTimeCounter = jumpTimeCounter - Time.deltaTime;
             }
         }
         if (Input.GetButtonUp("Jump"))
@@ -140,9 +159,10 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D rHit = Physics2D.Raycast(rightExtent, Vector2.down, jumpCushion, groundLayer);
         if (lHit.collider != null || rHit.collider != null)
         {
+            //Debug.Log("hit something");
             return true;
         }
-        return false;
+        else return false;
     }
 
     private void takeDamage(float _damage)
@@ -160,5 +180,15 @@ public class PlayerMovement : MonoBehaviour
     public float getCurrentHealth()
     {
         return currentHealth;
+    }
+    /*
+    private void OnLevelWasLoaded(int level)
+    {
+        spawnOnPoint();
+    }
+    */
+    void spawnOnPoint(Scene scene, LoadSceneMode mode)
+    {
+        transform.position = GameObject.FindWithTag("Player Spawn Point").transform.position;
     }
 }

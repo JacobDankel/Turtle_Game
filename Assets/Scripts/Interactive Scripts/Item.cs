@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public abstract class Item : MonoBehaviour
 {
     public string itemName;
-    public int itemCount;
+    //public int itemCount;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,5 +14,8 @@ public class Item : MonoBehaviour
             collision.GetComponent<PlayerMovement>().pickUpItem(this);
             Destroy(gameObject);
         }
+        effect();
     }
+
+    public abstract void effect();
 }
