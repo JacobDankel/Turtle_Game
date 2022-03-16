@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 4f, jumpForce = 10f, jumpCushion = 1f, jumpTime = .35f;
 
     private float jumpTimeCounter;
-    private bool isJumping;
+    public bool isJumping;
 
     private float horizontalMove;
     private float direction = 1;

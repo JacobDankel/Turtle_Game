@@ -1,7 +1,37 @@
 fileFormatVersion: 2
 guid: b2d42bc959ddab14a94200a7da7434d7
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -46086228168576531
+    second: Turtle Knight_0
+  - first:
+      213: 2390796450464298522
+    second: Turtle Knight_1
+  - first:
+      213: -8791905011707495203
+    second: Turtle Knight_2
+  - first:
+      213: -418712849574227022
+    second: Turtle Knight_3
+  - first:
+      213: -6604664466921673174
+    second: Turtle Knight_4
+  - first:
+      213: 5047361860595647421
+    second: Turtle Knight_5
+  - first:
+      213: -6116192603896526743
+    second: Turtle Knight_6
+  - first:
+      213: 3310941957010615467
+    second: Turtle Knight_7
+  - first:
+      213: 5599598051066341273
+    second: Turtle Knight_8
+  - first:
+      213: -190453717272135550
+    second: Turtle Knight_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +71,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,9 +105,231 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Turtle Knight_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 210
+        width: 75
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de179f4d1d44c5ff0800000000000000
+      internalID: -46086228168576531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Turtle Knight_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 210
+        width: 75
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a16703864b0dd2120800000000000000
+      internalID: 2390796450464298522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Turtle Knight_2
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 210
+        width: 75
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddcb23e29f0ecf580800000000000000
+      internalID: -8791905011707495203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Turtle Knight_3
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 210
+        width: 75
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b39c3ab1ee603af0800000000000000
+      internalID: -418712849574227022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Turtle Knight_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 105
+        width: 75
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2e2d7c09a48754a0800000000000000
+      internalID: -6604664466921673174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Turtle Knight_5
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 105
+        width: 75
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db388a1ced4db0640800000000000000
+      internalID: 5047361860595647421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Turtle Knight_6
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 105
+        width: 75
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96840e25b3bee1ba0800000000000000
+      internalID: -6116192603896526743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Turtle Knight_7
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 105
+        width: 75
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baced83fa24d2fd20800000000000000
+      internalID: 3310941957010615467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Turtle Knight_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 75
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99767ce62c4c5bd40800000000000000
+      internalID: 5599598051066341273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Turtle Knight_9
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 0
+        width: 75
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28877db6a5f5b5df0800000000000000
+      internalID: -190453717272135550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
