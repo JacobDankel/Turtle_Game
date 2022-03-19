@@ -58,9 +58,11 @@ public class PlayerMovement : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal");
         if (horizontalMove != 0)
         {
-            //anim.SetBool("Moving", true);
+            anim.SetBool("Moving", true);
         }
-        else //anim.SetBool("Moving", false);
+        else 
+            anim.SetBool("Moving", false);
+
         if (horizontalMove > 0)
         {
             direction = 1;
