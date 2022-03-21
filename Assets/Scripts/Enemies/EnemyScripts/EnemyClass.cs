@@ -19,12 +19,16 @@ public class EnemyClass : MonoBehaviour
 
     public float damage = 1f;
 
+    // Loot!
+    [SerializeField]
+    private GameObject lootDrop;
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         tran = GetComponent<Transform>();
         capCollider = GetComponent<CapsuleCollider2D>();
+        takeDamage(10);
     }
     
     protected void moveRB()
@@ -41,7 +45,10 @@ public class EnemyClass : MonoBehaviour
         }
         if (health == 0)
         {
-            //Debug.Log("goomba ded");
+            if (lootDrop != null)
+            {
+                Instantiate(lootDrop, gameObject.transform.position, gameObject.transform.rotation);
+            }
             Destroy(gameObject);
         }
     }
@@ -50,8 +57,6 @@ public class EnemyClass : MonoBehaviour
     {
         if (atCorner() || seesWall())
         {
-            //Debug.Log("Changing Direction");
-            //direction = -direction;
             flip();
         }
     }
@@ -61,20 +66,22 @@ public class EnemyClass : MonoBehaviour
     */
     protected bool atCorner()
     {
-        Vector3 leftExtent = capCollider.bounds.center + Vector3.left * capCollider.bounds.extents.x; //left center point of boxCollider
-        Vector3 rightExtent = capCollider.bounds.center + Vector3.right * capCollider.bounds.extents.x; //right center point of boxCollider
-
-        RaycastHit2D lHit = Physics2D.Raycast(leftExtent, Vector2.down, leftExtent.y + extraRaycastLength, groundLayer);
-        RaycastHit2D rHit = Physics2D.Raycast(rightExtent, Vector2.down, rightExtent.y + extraRaycastLength, groundLayer);
+        Vector3 leftExtent = capCollider.bounds.center + (Vector3.left * capCollider.bounds.extents.x); //left center point of boxCollider
+        Vector3 rightExtent = capCollider.bounds.center + (Vector3.right * capCollider.bounds.extents.x); //right center point of boxCollider
+        
+        RaycastHit2D lHit = Physics2D.Raycast(leftExtent, Vector2.down, capCollider.bounds.extents.y + extraRaycastLength, groundLayer);
+        RaycastHit2D rHit = Physics2D.Raycast(rightExtent, Vector2.down, capCollider.bounds.extents.y + extraRaycastLength, groundLayer);
+        //Debug.DrawRay(rightExtent, (capCollider.bounds.extents*Vector2.down), Color.green);
 
         float left = -.01f;
         float right = .01f;
-
+        
         if (!lHit.collider && direction <= left)
         {
             //Debug.Log("left corner");
             return true;
         }
+        
         if (!rHit.collider && direction >= right)
         {
             //Debug.Log("right corner");
@@ -99,7 +106,6 @@ public class EnemyClass : MonoBehaviour
     protected bool seesPlayer()
     {
         RaycastHit2D visionLine = Physics2D.Raycast(capCollider.bounds.center, transform.right, viewRange, playerLayer);
-
         if (visionLine.collider)
         {
             //Debug.Log("I SEE YOU");

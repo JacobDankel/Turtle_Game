@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
 
     public float currentHealth;
 
+    // Attack Variables
+    public float weaponDamage;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -56,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal");
+        /*
         if (horizontalMove != 0)
         {
             anim.SetBool("Moving", true);
@@ -82,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("trying to jump");
             
         }
-
+        */
         jumping();
         Interact();
         //anim.SetFloat("Speed", horizontalMove);

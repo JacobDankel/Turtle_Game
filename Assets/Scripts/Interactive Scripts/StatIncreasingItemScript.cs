@@ -6,9 +6,8 @@ public class StatIncreasingItemScript : Item
 {
     private GameObject player;
 
-    public int healthIncrease = 0, damageIncrease = 0, speedIncrease = 0, jumpIncrease = 0;
+    public float healthIncrease = 0, damageIncrease = 0, speedIncrease = 0, jumpIncrease = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -23,7 +22,7 @@ public class StatIncreasingItemScript : Item
         }
         if (damageIncrease > 0)
         {
-            //player.GetComponent<PlayerMovement>().
+            player.GetComponent<PlayerMovement>().weaponDamage += damageIncrease;
         }
         if (speedIncrease > 0)
         {
@@ -31,8 +30,7 @@ public class StatIncreasingItemScript : Item
         }
         if (jumpIncrease > 0)
         {
-            // not implemented correctly right now
-            //player.GetComponent<PlayerMovement>().jumpForce += jumpIncrease;
+            player.GetComponent<PlayerMovement>().jumpTime += jumpIncrease;
         }
     }
 }
