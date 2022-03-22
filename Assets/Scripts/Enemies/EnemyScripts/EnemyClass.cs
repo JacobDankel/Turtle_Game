@@ -11,7 +11,7 @@ public class EnemyClass : MonoBehaviour
     [SerializeField]
     protected CapsuleCollider2D capCollider;
     [SerializeField]
-    protected LayerMask groundLayer, damageLayer, playerLayer;
+    protected LayerMask groundLayer, damageLayer, playerLayer, enemyLayer;
     [SerializeField]
     protected float speed = 2f, direction = 1f, health = 2f, viewRange = 10f;
     [SerializeField]
@@ -55,7 +55,7 @@ public class EnemyClass : MonoBehaviour
 
     protected void patrol()
     {
-        if (atCorner() || seesWall())
+        if (atCorner() || seesWall() || seesOtherEnemy())
         {
             flip();
         }
@@ -71,7 +71,7 @@ public class EnemyClass : MonoBehaviour
         
         RaycastHit2D lHit = Physics2D.Raycast(leftExtent, Vector2.down, capCollider.bounds.extents.y + extraRaycastLength, groundLayer);
         RaycastHit2D rHit = Physics2D.Raycast(rightExtent, Vector2.down, capCollider.bounds.extents.y + extraRaycastLength, groundLayer);
-        //Debug.DrawRay(rightExtent, (capCollider.bounds.extents*Vector2.down), Color.green);
+        Debug.DrawRay(rightExtent, (capCollider.bounds.extents*Vector2.down), Color.green);
 
         float left = -.01f;
         float right = .01f;
@@ -128,4 +128,30 @@ public class EnemyClass : MonoBehaviour
         }
         else return false;
     }
+    
+    protected bool seesOtherEnemy()
+    {
+        Vector3 centerRightOfCollider = new Vector3(capCollider.bounds.center.x + capCollider.bounds.extents.x +.01f, capCollider.bounds.center.y);
+        Vector3 centerLeftOfCollider = new Vector3(capCollider.bounds.center.x - capCollider.bounds.extents.x - .01f, capCollider.bounds.center.y);
+        float range = .1f;
+
+        RaycastHit2D enemyVisionLineRight = Physics2D.Raycast(centerRightOfCollider, transform.right, range, enemyLayer);
+        RaycastHit2D enemyVisionLineLeft = Physics2D.Raycast(centerLeftOfCollider, -transform.right, -range, enemyLayer);
+        Debug.DrawRay(centerRightOfCollider, (range*Vector2.right), Color.green);
+        Debug.DrawRay(centerLeftOfCollider, (range * Vector2.left), Color.green);
+
+        if (enemyVisionLineRight.collider && (enemyVisionLineRight.collider != gameObject.GetComponent<CapsuleCollider2D>()))
+        {
+            //Debug.Log("I see another me");
+            return true;
+        }
+        if (enemyVisionLineLeft.collider && (enemyVisionLineLeft.collider != gameObject.GetComponent<CapsuleCollider2D>()))
+        {
+            //Debug.Log("I see another me");
+            return true;
+        }
+
+        else return false;
+    }
+    
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 355080418981730681}
   - component: {fileID: 355080418981730682}
   - component: {fileID: 355080418981730685}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bonk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -192698581
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847,
     type: 3}
@@ -151,12 +151,16 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
   speed: 1
   direction: 1
   health: 2
   viewRange: 10
   extraRaycastLength: 2
   damage: 1
+  lootDrop: {fileID: 0}
   anim: {fileID: 0}
   rangeColliderRight: {fileID: 355080420667169046}
   rangeColliderLeft: {fileID: 355080419711473457}
@@ -343,8 +347,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -192698581
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
     type: 3}
