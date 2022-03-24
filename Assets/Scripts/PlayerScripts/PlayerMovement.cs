@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     // Attack Variables
     public float weaponDamage;
 
+    private bool isAttacking;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -45,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<Rigidbody2D>();
         capCollider = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
+
         
         // For loading a new scene. spawnOnPoint is a function in this script.
         DontDestroyOnLoad(gameObject);
@@ -59,25 +62,38 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal");
-        if (Input.GetKey(KeyCode.RightArrow)) 
+        if (horizontalMove != 0) 
         {
             anim.SetBool("Running", true);
         }
 
-        if (!Input.GetKey(KeyCode.RightArrow))
+        if (horizontalMove == 0)
         {
             anim.SetBool("Running", false);
         } 
+        anim.SetFloat("Speed", horizontalMove);
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (horizontalMove > 0)
         {
-            anim.SetBool("Running", true);
+            direction = 1;
         }
-       
-        if (!Input.GetKey(KeyCode.LeftArrow))
+        if (horizontalMove < 0)
         {
-            anim.SetBool("Running", false);
+            direction = -1;
         }
+
+        if (isAttacking)
+        {
+            if (horizontalMove > 0)
+            {
+                direction = 1;
+            }
+            if (horizontalMove < 0)
+            {
+                direction = -1;
+            }
+        }
+        anim.SetFloat("Direction", direction );
 
         /*
         if (horizontalMove != 0)   
