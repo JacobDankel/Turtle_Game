@@ -59,8 +59,28 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal");
+        if (Input.GetKey(KeyCode.RightArrow)) 
+        {
+            anim.SetBool("Running", true);
+        }
+
+        if (!Input.GetKey(KeyCode.RightArrow))
+        {
+            anim.SetBool("Running", false);
+        } 
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            anim.SetBool("Running", true);
+        }
+       
+        if (!Input.GetKey(KeyCode.LeftArrow))
+        {
+            anim.SetBool("Running", false);
+        }
+
         /*
-        if (horizontalMove != 0)
+        if (horizontalMove != 0)   
         {
             anim.SetBool("Moving", true);
         }
@@ -84,7 +104,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             //Debug.Log("trying to jump");
-            
         }
         */
         jumping();
