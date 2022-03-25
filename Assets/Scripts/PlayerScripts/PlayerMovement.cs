@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             direction = -1;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow)) //isAttcking
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             anim.SetTrigger("Attacking");
 
