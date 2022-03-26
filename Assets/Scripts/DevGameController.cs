@@ -19,5 +19,12 @@ public class DevGameController : MonoBehaviour
         {
             SceneManager.LoadScene("Level_2");
         }
+
+        //Exiting the Game
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }
