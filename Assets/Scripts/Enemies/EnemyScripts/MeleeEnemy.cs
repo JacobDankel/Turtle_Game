@@ -39,6 +39,7 @@ public class MeleeEnemy : EnemyClass
     {
         if (rangeColliderRight.IsTouchingLayers(playerLayer))
         {
+            Debug.Log("in range motherfucker");
             isPlayerInRangeRight = true;
         }
         else isPlayerInRangeRight = false;

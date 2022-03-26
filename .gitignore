@@ -24,6 +24,7 @@ ExportedObj/
 *.pdb
 *.opendb
 *.VC.db
+*.log
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -36,3 +37,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 Logs/AssetImportWorker0-prev.log
+UserSettings/EditorUserSettings.asset
+Logs/shadercompiler-UnityShaderCompiler0.log
+Logs/shadercompiler-AssetImportWorker0.log
+Logs/AssetImportWorker0.log

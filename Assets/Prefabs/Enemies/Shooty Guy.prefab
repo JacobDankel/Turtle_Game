@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1475370839145593567}
   - component: {fileID: 1475370839145593560}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Projectile Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -192698581
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
     type: 3}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1475370840720549493}
   - component: {fileID: 1475370840720549492}
   - component: {fileID: 1475370840720549499}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shooty Guy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,8 +155,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -192698581
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d,
     type: 3}
@@ -231,12 +231,16 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
   speed: 2
   direction: 1
   health: 2
   viewRange: 10
   extraRaycastLength: 2
   damage: 1
+  lootDrop: {fileID: 0}
   projectileSpawn: {fileID: 1475370839145593567}
   projectile: {fileID: 6710859879922067303, guid: baf69881bc24c08469532dc34c36c5e5,
     type: 3}

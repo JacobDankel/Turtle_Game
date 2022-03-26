@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 4f, jumpForce = 10f, jumpCushion = 1f, jumpTime = .35f;
 
     private float jumpTimeCounter;
-    private bool isJumping;
+    public bool isJumping;
 
     private float horizontalMove;
     private float direction = 1;
@@ -33,6 +33,11 @@ public class PlayerMovement : MonoBehaviour
     public float maxHealth = 3;
 
     public float currentHealth;
+
+    // Attack Variables
+    public float weaponDamage;
+
+    private bool isAttacking;
 
     // Start is called before the first frame update
     private void Start()
@@ -42,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<Rigidbody2D>();
         capCollider = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
+
         
         // For loading a new scene. spawnOnPoint is a function in this script.
         DontDestroyOnLoad(gameObject);
@@ -56,11 +62,49 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal");
-        if (horizontalMove != 0)
+        if (horizontalMove != 0) 
         {
-            //anim.SetBool("Moving", true);
+            anim.SetBool("Running", true);
         }
-        else //anim.SetBool("Moving", false);
+
+        if (horizontalMove == 0)
+        {
+            anim.SetBool("Running", false);
+        } 
+        anim.SetFloat("Speed", horizontalMove);
+
+        if (horizontalMove > 0)
+        {
+            direction = 1;
+        }
+        if (horizontalMove < 0)
+        {
+            direction = -1;
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            anim.SetTrigger("Attacking");
+
+            if (horizontalMove > 0)
+            {
+                direction = 1;
+            }
+            if (horizontalMove < 0)
+            {
+                direction = -1;
+            }
+        }
+        anim.SetFloat("Direction", direction );
+
+        /*
+        if (horizontalMove != 0)   
+        {
+            anim.SetBool("Moving", true);
+        }
+        else 
+            anim.SetBool("Moving", false);
+
         if (horizontalMove > 0)
         {
             direction = 1;
@@ -78,9 +122,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             //Debug.Log("trying to jump");
-            
         }
-
+        */
         jumping();
         Interact();
         //anim.SetFloat("Speed", horizontalMove);
