@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             direction = -1;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetButtonDown("Fire1"))
         {
             anim.SetTrigger("Attacking");
 

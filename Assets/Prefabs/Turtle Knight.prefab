@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 398995408093143090}
   - component: {fileID: 398995408093143095}
   - component: {fileID: 9048735359870222553}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Turtle Knight
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -133,6 +133,7 @@ MonoBehaviour:
   isJumping: 0
   maxHealth: 3
   currentHealth: 0
+  weaponDamage: 0
 --- !u!95 &398995408093143095
 Animator:
   serializedVersion: 3
