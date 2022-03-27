@@ -28,7 +28,6 @@ public class EnemyClass : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         tran = GetComponent<Transform>();
         capCollider = GetComponent<CapsuleCollider2D>();
-        takeDamage(10);
     }
     
     protected void moveRB()
@@ -39,10 +38,8 @@ public class EnemyClass : MonoBehaviour
 
     protected void takeDamage(float _damage)
     {
-        if (capCollider.IsTouchingLayers(damageLayer))
-        {
-            health -= _damage;
-        }
+        //Debug.Log("Taking fire!");
+        health -= _damage;
         if (health == 0)
         {
             if (lootDrop != null)

@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     public float currentHealth;
 
     // Attack Variables
-    public float weaponDamage;
+    public float weaponDamage = 1;
 
     private bool isAttacking;
 
@@ -73,27 +73,19 @@ public class PlayerMovement : MonoBehaviour
         } 
         anim.SetFloat("Speed", horizontalMove);
 
-        if (horizontalMove > 0)
+        if (horizontalMove > 0 && !isAttacking)
         {
             direction = 1;
         }
-        if (horizontalMove < 0)
+        if (horizontalMove < 0 && !isAttacking)
         {
             direction = -1;
         }
 
         if (Input.GetButtonDown("Fire1"))
         {
+            isAttacking = true;
             anim.SetTrigger("Attacking");
-
-            if (horizontalMove > 0)
-            {
-                direction = 1;
-            }
-            if (horizontalMove < 0)
-            {
-                direction = -1;
-            }
         }
         anim.SetFloat("Direction", direction );
 
@@ -132,7 +124,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        controller.velocity = new Vector2(horizontalMove * speed, controller.velocity.y);
+        if (isAttacking && IsGrounded())
+        {
+            controller.velocity = Vector2.zero;
+        }
+        else controller.velocity = new Vector2(horizontalMove * speed, controller.velocity.y);
     }
 
     public void pickUpItem(Item item)
@@ -233,5 +229,16 @@ public class PlayerMovement : MonoBehaviour
     void spawnOnPoint(Scene scene, LoadSceneMode mode)
     {
         transform.position = GameObject.FindWithTag("Player Spawn Point").transform.position;
+    }
+
+    public void isAttackingOn()
+    {
+        isAttacking = true;
+        //Debug.Log("isAttacking is " + isAttacking);
+    }
+    public void isAttackingOff()
+    {
+        isAttacking = false;
+        //Debug.Log("isAttacking is " + isAttacking);
     }
 }

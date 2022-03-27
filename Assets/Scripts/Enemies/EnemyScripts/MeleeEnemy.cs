@@ -26,7 +26,6 @@ public class MeleeEnemy : EnemyClass
     void Update()
     {
         patrol();
-        takeDamage(1);
         attack();
     }
 
@@ -39,7 +38,7 @@ public class MeleeEnemy : EnemyClass
     {
         if (rangeColliderRight.IsTouchingLayers(playerLayer))
         {
-            Debug.Log("in range motherfucker");
+            //Debug.Log("in range motherfucker");
             isPlayerInRangeRight = true;
         }
         else isPlayerInRangeRight = false;

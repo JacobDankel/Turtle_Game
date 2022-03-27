@@ -17,7 +17,6 @@ public class EnemyScript : EnemyClass
     void Update()
     {
         patrol();
-        takeDamage(1);
     }
 
     private void FixedUpdate()
