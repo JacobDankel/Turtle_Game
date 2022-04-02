@@ -38,7 +38,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475370839145593566}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -192698581
-  m_SortingLayer: 4
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
     type: 3}
@@ -112,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 1475370840720549496}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.63, y: 2.17, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.8, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1475370839145593567}
   m_Father: {fileID: 0}
@@ -156,9 +156,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -192698581
-  m_SortingLayer: 4
+  m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d,
+  m_Sprite: {fileID: -5465782464036299893, guid: f48cc6e880b2fed4fad93601b3076984,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -204,8 +204,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0, y: 0.0015103072}
+  m_Size: {x: 1, y: 1.7432762}
   m_Direction: 0
 --- !u!114 &1475370840720549499
 MonoBehaviour:
@@ -234,14 +234,15 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  speed: 2
+  speed: 1.5
   direction: 1
   health: 2
   viewRange: 10
   extraRaycastLength: 2
   damage: 1
-  lootDrop: {fileID: 0}
+  lootDrop: {fileID: 3245289695582013233, guid: bb52331b9a568a04486601e1457790c5,
+    type: 3}
   projectileSpawn: {fileID: 1475370839145593567}
   projectile: {fileID: 6710859879922067303, guid: baf69881bc24c08469532dc34c36c5e5,
     type: 3}
-  attackCooldown: 0.5
+  attackCooldown: 1

@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5523460069388396626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.1918287, y: 1.7316251, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,9 +73,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -192698581
-  m_SortingLayer: 4
+  m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
+  m_Sprite: {fileID: 4425000679336603657, guid: 7ace99f68d6742848a0dacac8e1c9056,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -167,7 +167,8 @@ MonoBehaviour:
   viewRange: 10
   extraRaycastLength: 1
   damage: 1
-  lootDrop: {fileID: 0}
+  lootDrop: {fileID: 5052660236432991349, guid: 6657b8766c1c83845bb901421d8aba13,
+    type: 3}
 --- !u!70 &7353887270986874339
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

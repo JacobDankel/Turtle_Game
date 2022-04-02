@@ -126,4 +126,4 @@ MonoBehaviour:
   healthIncrease: 0
   damageIncrease: 0
   speedIncrease: 0
-  jumpIncrease: 0.5
+  jumpIncrease: 0.01

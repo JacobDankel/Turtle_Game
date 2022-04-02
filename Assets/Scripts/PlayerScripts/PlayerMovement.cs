@@ -89,6 +89,11 @@ public class PlayerMovement : MonoBehaviour
         }
         anim.SetFloat("Direction", direction );
 
+        if (IsGrounded())
+        {
+            anim.SetBool("Grounded", true);
+        }
+        else anim.SetBool("Grounded", false);
         /*
         if (horizontalMove != 0)   
         {

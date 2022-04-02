@@ -27,5 +27,9 @@ public class ProjectileScript : MonoBehaviour
         {
             collision.SendMessage("takeDamage", damage);
         }
+        if (collision.tag != "Enemy")
+        {
+            Destroy(gameObject);
+        }
     }
 }

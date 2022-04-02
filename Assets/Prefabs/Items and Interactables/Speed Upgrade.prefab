@@ -99,7 +99,7 @@ MonoBehaviour:
   itemName: Speed Upgrade
   healthIncrease: 0
   damageIncrease: 0
-  speedIncrease: 10
+  speedIncrease: 0.1
   jumpIncrease: 0
 --- !u!61 &5052660236432991345
 BoxCollider2D:

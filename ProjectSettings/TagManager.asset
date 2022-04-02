@@ -41,8 +41,8 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
+  - name: Background
+    uniqueID: 2678890697
     locked: 0
   - name: Ground
     uniqueID: 3458211541
@@ -50,9 +50,12 @@ TagManager:
   - name: Interactables
     uniqueID: 885837619
     locked: 0
+  - name: Enemies
+    uniqueID: 4102268715
+    locked: 0
   - name: Player
     uniqueID: 744510489
     locked: 0
-  - name: Enemies
-    uniqueID: 4102268715
+  - name: Default
+    uniqueID: 0
     locked: 0

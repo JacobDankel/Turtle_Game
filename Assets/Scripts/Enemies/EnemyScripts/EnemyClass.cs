@@ -21,7 +21,7 @@ public class EnemyClass : MonoBehaviour
 
     // Loot!
     [SerializeField]
-    private GameObject lootDrop;
+    protected GameObject lootDrop;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +44,7 @@ public class EnemyClass : MonoBehaviour
         {
             if (lootDrop != null)
             {
-                Instantiate(lootDrop, gameObject.transform.position, gameObject.transform.rotation);
+                Instantiate(lootDrop, gameObject.transform.position, Quaternion.identity);
             }
             Destroy(gameObject);
         }
