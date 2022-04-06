@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isAttacking;
 
+    private GameObject[] players;
     // Start is called before the first frame update
     private void Start()
     {
@@ -234,6 +235,12 @@ public class PlayerMovement : MonoBehaviour
     void spawnOnPoint(Scene scene, LoadSceneMode mode)
     {
         transform.position = GameObject.FindWithTag("Player Spawn Point").transform.position;
+        players = GameObject.FindGameObjectsWithTag("Player");
+
+        if (players.Length > 1)
+        {
+            Destroy(players[1]);
+        }
     }
 
     public void isAttackingOn()
