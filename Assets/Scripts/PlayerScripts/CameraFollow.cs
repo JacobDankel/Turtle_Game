@@ -10,7 +10,10 @@ public class CameraFollow : MonoBehaviour
     Vector3 tempPosition;
     [SerializeField]
     float minX, minY, maxX, maxY;
-
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
     void FixedUpdate()
     {
         if (player == null)

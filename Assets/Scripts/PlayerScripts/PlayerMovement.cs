@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isAttacking;
 
-    private GameObject[] players;
+    public GameObject[] players;
     // Start is called before the first frame update
     private void Start()
     {
