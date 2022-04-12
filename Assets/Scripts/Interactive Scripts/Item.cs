@@ -11,10 +11,10 @@ public abstract class Item : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            effect();
             collision.GetComponent<PlayerMovement>().pickUpItem(this);
             Destroy(gameObject);
         }
-        effect();
     }
 
     public abstract void effect();

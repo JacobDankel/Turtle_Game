@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     public float weaponDamage = 1;
 
     private bool isAttacking;
+    private bool isInKockback;
 
     public GameObject[] players;
     // Start is called before the first frame update
@@ -130,11 +131,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isAttacking && IsGrounded())
+        if ((isAttacking && IsGrounded()))
         {
             controller.velocity = Vector2.zero;
         }
-        else controller.velocity = new Vector2(horizontalMove * speed, controller.velocity.y);
+        else if (!isInKockback) controller.velocity = new Vector2(horizontalMove * speed, controller.velocity.y);
     }
 
     public void pickUpItem(Item item)
@@ -212,8 +213,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void takeDamage(float _damage)
     {
+        anim.SetTrigger("Took Damage");
         currentHealth -= _damage;
-
+        
+        if (direction >= 1)
+        {
+            controller.velocity = (Vector2.up + Vector2.left)*5;
+            //Debug.Log(controller.velocity);
+        }
+        else if (direction >= -1)
+        {
+            controller.velocity = (Vector2.up + Vector2.right) * 5;
+            //Debug.Log(controller.velocity);
+        }
         //healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
@@ -252,5 +264,14 @@ public class PlayerMovement : MonoBehaviour
     {
         isAttacking = false;
         //Debug.Log("isAttacking is " + isAttacking);
+    }
+
+    public void isInKnockbackOn()
+    {
+        isInKockback = true;
+    }
+    public void isInKockbackOff()
+    {
+        isInKockback = false;
     }
 }
