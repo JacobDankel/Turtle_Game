@@ -19,6 +19,8 @@ public class EnemyClass : MonoBehaviour
 
     public float damage = 1f;
 
+    
+
     // Loot!
     [SerializeField]
     protected GameObject lootDrop;

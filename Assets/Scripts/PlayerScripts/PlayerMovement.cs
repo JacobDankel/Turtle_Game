@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float currentHealth;
 
+    public HealthBar healthbar;
+    
     // Attack Variables
     public float weaponDamage = 1;
 
@@ -63,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        
         horizontalMove = Input.GetAxisRaw("Horizontal");
         if (horizontalMove != 0) 
         {
@@ -215,7 +218,7 @@ public class PlayerMovement : MonoBehaviour
     {
         anim.SetTrigger("Took Damage");
         currentHealth -= _damage;
-        
+        healthbar.SetHealth(currentHealth);
         if (direction >= 1)
         {
             controller.velocity = (Vector2.up + Vector2.left)*5;
