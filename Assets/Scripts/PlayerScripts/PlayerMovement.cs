@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -43,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isInKockback;
 
     public GameObject[] players;
+
+    public GameObject deathScreen;
     // Start is called before the first frame update
     private void Start()
     {
@@ -52,10 +55,10 @@ public class PlayerMovement : MonoBehaviour
         capCollider = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
 
-        
         // For loading a new scene. spawnOnPoint is a function in this script.
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += spawnOnPoint;
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
         inventory = new Inventory();
 
@@ -233,6 +236,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            deathScreen.SetActive(true);
+
             Destroy(gameObject);
         }
     }
