@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GameOverSc : MonoBehaviour
 {
+
+    public GameObject player;
+
     public void RestartButton()
     {
         SceneManager.LoadScene("Level_1");
@@ -13,6 +16,7 @@ public class GameOverSc : MonoBehaviour
 
     public void ExitButton()
     {
+        Destroy(player);
         SceneManager.LoadScene("Main Menu");
     }
 

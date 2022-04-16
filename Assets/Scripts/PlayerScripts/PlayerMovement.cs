@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     public float weaponDamage = 1;
 
     private bool isAttacking;
-    private bool isInKockback;
+    public bool isInKockback;
 
     public GameObject[] players;
 
@@ -56,10 +56,11 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
 
         // For loading a new scene. spawnOnPoint is a function in this script.
+        /*
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += spawnOnPoint;
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-
+        */
         inventory = new Inventory();
 
         currentHealth = maxHealth;
@@ -137,6 +138,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+
         if ((isAttacking && IsGrounded()))
         {
             controller.velocity = Vector2.zero;
