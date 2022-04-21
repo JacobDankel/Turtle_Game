@@ -46,6 +46,9 @@ public class PlayerMovement : MonoBehaviour
     public GameObject[] players;
 
     public GameObject deathScreen;
+
+    public Text dialogueBox; 
+    
     // Start is called before the first frame update
     private void Start()
     {
@@ -54,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<Rigidbody2D>();
         capCollider = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
+        dialogueBox.gameObject.SetActive(false); // initial bool is false
 
         // For loading a new scene. spawnOnPoint is a function in this script.
         /*
@@ -135,7 +139,17 @@ public class PlayerMovement : MonoBehaviour
         //anim.SetFloat("Speed", horizontalMove);
         //anim.SetFloat("Direction", direction);
     }
-
+    private void OnTriggerEnter2D(Collider2D collision) 
+    {
+        if (collision.gameObject.CompareTag("DialogueBox")) // text appears if player collides with collider
+        {
+            dialogueBox.gameObject.SetActive(true); // enables text 
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        dialogueBox.gameObject.SetActive(false); // disables text    
+    }
     private void FixedUpdate()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);

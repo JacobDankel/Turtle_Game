@@ -7,6 +7,7 @@ TagManager:
   - Enemy Damage
   - Player Spawn Point
   - Enemy
+  - DialogueBox
   layers:
   - Default
   - TransparentFX
