@@ -47,8 +47,9 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject deathScreen;
 
-    public Text dialogueBox; 
-    
+    public Text dialogueBox;
+    public Text healthdialogueBox;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -58,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         capCollider = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
         dialogueBox.gameObject.SetActive(false); // initial bool is false
+        healthdialogueBox.gameObject.SetActive(false); // initial bool is false
 
         // For loading a new scene. spawnOnPoint is a function in this script.
         /*
@@ -141,14 +143,20 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision) 
     {
-        if (collision.gameObject.CompareTag("DialogueBox")) // text appears if player collides with collider
+        if (collision.gameObject.CompareTag("DialogueBox")) // compares tag if player collides with collider
         {
             dialogueBox.gameObject.SetActive(true); // enables text 
+        }
+
+        else if (collision.gameObject.CompareTag("HealthDialogueBox")) // compares tag if player collides with collider 
+        {
+            healthdialogueBox.gameObject.SetActive(true); // enables text
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        dialogueBox.gameObject.SetActive(false); // disables text    
+        dialogueBox.gameObject.SetActive(false); // disables text
+        healthdialogueBox.gameObject.SetActive(false); // disables text
     }
     private void FixedUpdate()
     {

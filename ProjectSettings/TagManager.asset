@@ -8,6 +8,7 @@ TagManager:
   - Player Spawn Point
   - Enemy
   - DialogueBox
+  - HealthDialogueBox
   layers:
   - Default
   - TransparentFX
