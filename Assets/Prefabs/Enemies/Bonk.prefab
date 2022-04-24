@@ -142,6 +142,7 @@ MonoBehaviour:
   rb2d: {fileID: 0}
   tran: {fileID: 0}
   capCollider: {fileID: 0}
+  anim: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -160,9 +161,9 @@ MonoBehaviour:
   viewRange: 10
   extraRaycastLength: 2
   damage: 1
+  isInPain: 0
   lootDrop: {fileID: 3245289695582013233, guid: bb52331b9a568a04486601e1457790c5,
     type: 3}
-  anim: {fileID: 0}
   rangeColliderRight: {fileID: 355080420667169046}
   rangeColliderLeft: {fileID: 355080419711473457}
   attackDelayTime: 1
@@ -210,7 +211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355080419711473458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.91, y: 0.02, z: 0}
+  m_LocalPosition: {x: 0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 355080418981730686}
@@ -257,7 +258,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355080420667169047}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.97, y: 0.01, z: 0}
+  m_LocalPosition: {x: 0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 355080418981730686}

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MeleeEnemy : EnemyClass
 {
-    [SerializeField]
-    private Animator anim;
+    //[SerializeField]
+    //private Animator anim;
     [SerializeField]
     private CapsuleCollider2D rangeColliderRight, rangeColliderLeft;
     [SerializeField]
