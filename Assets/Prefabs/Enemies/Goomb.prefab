@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5523460069388396638}
   - component: {fileID: 5523460069388396637}
   - component: {fileID: 5523460069388396636}
+  - component: {fileID: 3184018091863619745}
   - component: {fileID: 5523460069388396627}
   - component: {fileID: 7353887270986874339}
   m_Layer: 7
@@ -134,6 +135,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &3184018091863619745
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5523460069388396626}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22bd6d3419c0c824fac528da836c887f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5523460069388396627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +169,7 @@ MonoBehaviour:
   rb2d: {fileID: 0}
   tran: {fileID: 0}
   capCollider: {fileID: 0}
+  anim: {fileID: 3184018091863619745}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -167,6 +188,7 @@ MonoBehaviour:
   viewRange: 10
   extraRaycastLength: 1
   damage: 1
+  isInPain: 0
   lootDrop: {fileID: 5052660236432991349, guid: 6657b8766c1c83845bb901421d8aba13,
     type: 3}
 --- !u!70 &7353887270986874339

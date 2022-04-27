@@ -11,15 +11,19 @@ public class EnemyClass : MonoBehaviour
     [SerializeField]
     protected CapsuleCollider2D capCollider;
     [SerializeField]
+    protected Animator anim;
+    [SerializeField]
     protected LayerMask groundLayer, damageLayer, playerLayer, enemyLayer;
     [SerializeField]
     protected float speed = 2f, direction = 1f, health = 2f, viewRange = 10f;
     [SerializeField]
     protected float extraRaycastLength = 6f;// This is the extra length from the rigidbody that the raycast extends to detect the ground. It should be just below the rb in most cases.
 
+    public bool isMoving;
+
     public float damage = 1f;
 
-    
+    public bool isInPain;
 
     // Loot!
     [SerializeField]
@@ -30,11 +34,13 @@ public class EnemyClass : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         tran = GetComponent<Transform>();
         capCollider = GetComponent<CapsuleCollider2D>();
+        anim = GetComponent<Animator>();
     }
     
     protected void moveRB()
     {
         rb2d.velocity = new Vector2(direction * speed, rb2d.velocity.y);
+        isMoving = true;
     }
 
 
@@ -42,6 +48,7 @@ public class EnemyClass : MonoBehaviour
     {
         //Debug.Log("Taking fire!");
         health -= _damage;
+        anim.SetTrigger("In Pain");
         if (health == 0)
         {
             if (lootDrop != null)
@@ -159,5 +166,15 @@ public class EnemyClass : MonoBehaviour
         {
             collision.collider.SendMessage("takeDamage", damage);
         }
+    }
+
+    private void isInPainOn()
+    {
+        isInPain = true;
+    }
+    
+    private void isInPainOff()
+    {
+        isInPain = false;
     }
 }
