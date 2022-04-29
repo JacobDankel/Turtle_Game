@@ -70,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         inventory = new Inventory();
 
         currentHealth = maxHealth;
+        healthbar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -246,7 +247,7 @@ public class PlayerMovement : MonoBehaviour
     {
         anim.SetTrigger("Took Damage");
         currentHealth -= _damage;
-        healthbar.SetHealth((int)currentHealth);
+        healthbar.SetHealth(currentHealth);
         if (direction >= 1)
         {
             controller.velocity = (Vector2.up + Vector2.left)*5;
