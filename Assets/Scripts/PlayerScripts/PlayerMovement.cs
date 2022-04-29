@@ -246,7 +246,7 @@ public class PlayerMovement : MonoBehaviour
     {
         anim.SetTrigger("Took Damage");
         currentHealth -= _damage;
-        healthbar.SetHealth(currentHealth);
+        healthbar.SetHealth((int)currentHealth);
         if (direction >= 1)
         {
             controller.velocity = (Vector2.up + Vector2.left)*5;
