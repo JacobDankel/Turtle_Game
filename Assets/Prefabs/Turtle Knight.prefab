@@ -195,7 +195,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3662578887688013383}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!1 &3989516516450481320
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,8 +332,13 @@ MonoBehaviour:
   isJumping: 0
   maxHealth: 3
   currentHealth: 0
+  healthbar: {fileID: 0}
   weaponDamage: 1
+  isInKockback: 0
   players: []
+  deathScreen: {fileID: 0}
+  dialogueBox: {fileID: 0}
+  healthdialogueBox: {fileID: 0}
 --- !u!95 &3989516516450481330
 Animator:
   serializedVersion: 3
