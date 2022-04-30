@@ -15012,6 +15012,7 @@ GameObject:
   - component: {fileID: 568564554}
   - component: {fileID: 568564553}
   - component: {fileID: 568564552}
+  - component: {fileID: 568564555}
   m_Layer: 7
   m_Name: Nuclear Hentai
   m_TagString: Enemy
@@ -15059,7 +15060,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ce0101f49f0750d45b5111da1ec59faf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1d187d00dd34fb244927e9af2b34102c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -15078,7 +15079,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568564549}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.41, y: -4.72, z: 0}
+  m_LocalPosition: {x: -38.33, y: -5.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1099404938}
@@ -15163,6 +15164,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &568564555
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568564549}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 254707d5904fceb46bff1ecbf41b21a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &590709994
 GameObject:
   m_ObjectHideFlags: 0
