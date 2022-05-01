@@ -21,11 +21,12 @@ public class ProjectileScript : MonoBehaviour
         Destroy(gameObject, destroyTime);           //Destroys Projectile Gameobject after destroyTime has elapsed on creation.
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            collision.SendMessage("takeDamage", damage);
+            collision.GetComponent<PlayerMovement>().takeDamage(damage);
+            //collision.SendMessage("takeDamage", damage);
         }
         if (collision.tag != "Enemy")
         {

@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: -192698581
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847,
+  m_Sprite: {fileID: 6803777397305524171, guid: db517b51aba46894d952af320271c792,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -160,6 +160,7 @@ MonoBehaviour:
   health: 2
   viewRange: 10
   extraRaycastLength: 2
+  isMoving: 0
   damage: 1
   isInPain: 0
   lootDrop: {fileID: 3245289695582013233, guid: bb52331b9a568a04486601e1457790c5,

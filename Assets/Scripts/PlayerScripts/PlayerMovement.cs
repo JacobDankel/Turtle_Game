@@ -53,13 +53,17 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+
         //Grab references for rigidbody and animator from body 
         tran = GetComponent<Transform>();
         controller = GetComponent<Rigidbody2D>();
         capCollider = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
+
+
         dialogueBox.gameObject.SetActive(false); // initial bool is false
         healthdialogueBox.gameObject.SetActive(false); // initial bool is false
+
 
         // For loading a new scene. spawnOnPoint is a function in this script.
         /*
@@ -243,7 +247,7 @@ public class PlayerMovement : MonoBehaviour
         else return false;
     }
 
-    private void takeDamage(float _damage)
+    public void takeDamage(float _damage)
     {
         anim.SetTrigger("Took Damage");
         currentHealth -= _damage;
