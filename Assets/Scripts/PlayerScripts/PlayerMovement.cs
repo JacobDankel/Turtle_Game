@@ -106,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isAttacking = true;
             anim.SetTrigger("Attacking");
+            //SoundScript.play("Player Attack");
         }
         anim.SetFloat("Direction", direction );
 
@@ -208,6 +209,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             isJumping = true;
+            SoundScript.play("Player Jump");
             jumpTimeCounter = jumpTime;
             controller.velocity = Vector2.up * jumpForce * Time.deltaTime;
         }
@@ -263,7 +265,7 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log(controller.velocity);
         }
         //healthBar.SetHealth(currentHealth);
-
+        
         if (currentHealth <= 0)
         {
             deathScreen.SetActive(true);
@@ -296,6 +298,7 @@ public class PlayerMovement : MonoBehaviour
     public void isAttackingOn()
     {
         isAttacking = true;
+        SoundScript.play("Player Attack");
         //Debug.Log("isAttacking is " + isAttacking);
     }
     public void isAttackingOff()
@@ -307,6 +310,7 @@ public class PlayerMovement : MonoBehaviour
     public void isInKnockbackOn()
     {
         isInKockback = true;
+        SoundScript.play("Player Got Hit");
     }
     public void isInKockbackOff()
     {

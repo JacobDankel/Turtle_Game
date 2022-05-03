@@ -11,6 +11,8 @@ public abstract class Item : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            Debug.Log("here");
+            SoundScript.play("Item Pickup");
             effect();
             collision.GetComponent<PlayerMovement>().pickUpItem(this);
             Destroy(gameObject);

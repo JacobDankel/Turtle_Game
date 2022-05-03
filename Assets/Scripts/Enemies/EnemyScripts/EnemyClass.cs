@@ -49,6 +49,7 @@ public class EnemyClass : MonoBehaviour
         //Debug.Log("Taking fire!");
         health -= _damage;
         anim.SetTrigger("In Pain");
+        SoundScript.play("Enemy Got Hit");
         if (health == 0)
         {
             if (lootDrop != null)

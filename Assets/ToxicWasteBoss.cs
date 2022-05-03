@@ -70,6 +70,7 @@ public class ToxicWasteBoss : EnemyClass
         {
             //Debug.Log("here2");
             Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
+            SoundScript.play("Boss Projectile");
             lastAttackTime = Time.time + attackCooldown;
         }
     }
@@ -79,6 +80,7 @@ public class ToxicWasteBoss : EnemyClass
         //if (Time.time > lastAttackTime)
         {
             Instantiate(floorAttack, new Vector2(player.transform.position.x, gameObject.transform.position.y), player.transform.rotation);
+            SoundScript.play("Boss Floor Attack");
             lastAttackTime = Time.time + attackCooldown;
         }
     }
