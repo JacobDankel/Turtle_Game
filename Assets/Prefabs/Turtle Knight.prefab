@@ -124,13 +124,14 @@ GameObject:
   - component: {fileID: 3662578887688013434}
   - component: {fileID: 3662578887688013433}
   - component: {fileID: 3662578887688013432}
+  - component: {fileID: 1293223841}
   m_Layer: 0
   m_Name: Main Camera Turtle Knight
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3662578887688013434
 Transform:
   m_ObjectHideFlags: 0
@@ -139,7 +140,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3662578887688013383}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.954, y: 0.105, z: -3.9337015}
+  m_LocalPosition: {x: -0.02, y: 0.14, z: -3.9337015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3989516516450481333}
@@ -152,7 +153,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3662578887688013383}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -195,7 +196,25 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3662578887688013383}
+  m_Enabled: 0
+--- !u!114 &1293223841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3662578887688013383}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb26d6491d2e7948a27668b4daaf6bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 3989516516450481333}
+  lerpSpeed: 10
+  minX: -28
+  minY: 0
+  maxX: 21
+  maxY: 7
 --- !u!1 &3989516516450481320
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +386,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 3989516516450481320}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b270ee0b2746a564680166a1134be425, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
