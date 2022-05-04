@@ -27,18 +27,28 @@ public class MeleeEnemy : EnemyClass
     {
         patrol();
         attack();
+
+        if (isMoving == true)
+        {
+            anim.SetBool("Is Moving", true);
+        }
+        else anim.SetBool("Is Moving", false);
     }
 
     private void FixedUpdate()
     {
-        rb2d.velocity = new Vector2(direction * speed, rb2d.velocity.y);
+        if (isCurrentlyAttacking)
+        {
+            rb2d.velocity = Vector2.zero;
+        }
+        else moveRB();
+        //rb2d.velocity = new Vector2(direction * speed, rb2d.velocity.y);
     }
 
     private void attack()
     {
         if (rangeColliderRight.IsTouchingLayers(playerLayer))
         {
-            //Debug.Log("in range motherfucker");
             isPlayerInRangeRight = true;
         }
         else isPlayerInRangeRight = false;
@@ -78,6 +88,31 @@ public class MeleeEnemy : EnemyClass
             yield return new WaitForSeconds(attackDelayTime);
             isCurrentlyAttacking = false;
         }
+    }
+
+    void patrolMelee()
+    {
+        if (atCorner() || seesWall() || seesOtherEnemy())
+        {
+            flipMelee();
+        }
+    }
+
+    void flipMelee()
+    {
+        direction = -direction;
+        /*
+        if (direction == 1)
+        {
+            tran.Rotate(0f, 180f, 0f);
+        }
+        if (direction == -1)
+        {
+            tran.Rotate(0f, 180f, 0f);
+        }
+        */
+        tran.Rotate(0f, 180f, 0f);
+        Debug.Log("melee flipped");
     }
 }
 
