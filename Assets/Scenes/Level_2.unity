@@ -1789,10 +1789,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1701764621}
   lerpSpeed: 15
-  minX: -9
+  minX: 12
   minY: 0
   maxX: 76
-  maxY: 28
+  maxY: 27
 --- !u!81 &597686612
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1852,7 +1852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597686610}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.24, y: -2.935, z: -10}
+  m_LocalPosition: {x: 20.7, y: -1.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
