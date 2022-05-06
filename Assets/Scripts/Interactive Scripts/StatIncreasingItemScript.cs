@@ -6,7 +6,7 @@ public class StatIncreasingItemScript : Item
 {
     private GameObject player;
 
-    public float healthIncrease = 0, damageIncrease = 0, speedIncrease = 0, jumpIncrease = 0;
+    public float healthIncrease = 0, damageIncrease = 0, speedIncrease = 0, jumpIncrease = 0, healthRefill = 0;
 
     void Start()
     {
@@ -31,6 +31,13 @@ public class StatIncreasingItemScript : Item
         if (jumpIncrease > 0)
         {
             player.GetComponent<PlayerMovement>().jumpTime += jumpIncrease;
+        }
+        if (healthRefill > 0)
+        {
+            if (player.GetComponent<PlayerMovement>().currentHealth < player.GetComponent<PlayerMovement>().maxHealth)
+            {
+                player.GetComponent<PlayerMovement>().currentHealth += healthRefill;
+            }
         }
     }
 }
