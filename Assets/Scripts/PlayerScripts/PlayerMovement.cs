@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-
+        setUpgrades();
         //Grab references for rigidbody and animator from body 
         tran = GetComponent<Transform>();
         controller = GetComponent<Rigidbody2D>();
@@ -315,5 +315,19 @@ public class PlayerMovement : MonoBehaviour
     public void isInKockbackOff()
     {
         isInKockback = false;
+    }
+
+    public void saveUpgrades()
+    {
+        UpgradeHolder.speed = speed;
+        UpgradeHolder.maxHealth = maxHealth;
+        UpgradeHolder.jumpTime = jumpTime;
+    }
+
+    public void setUpgrades()
+    {
+        speed = UpgradeHolder.speed;
+        maxHealth = UpgradeHolder.maxHealth;
+        jumpTime = UpgradeHolder.jumpTime;
     }
 }
