@@ -8082,6 +8082,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueBox
       objectReference: {fileID: 0}
+    - target: {fileID: 2255683541816448796, guid: 5da13c55f1f42414badfcbc692808765,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2255683541816448799, guid: 5da13c55f1f42414badfcbc692808765,
         type: 3}
       propertyPath: m_Pivot.x
