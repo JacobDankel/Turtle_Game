@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5931735380724712905}
   m_Layer: 0
   m_Name: Waste Projectile Spawn Point
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 6898050216692453078}
   m_Layer: 0
   m_Name: Melee Trigger
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

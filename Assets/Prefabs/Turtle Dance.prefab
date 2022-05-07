@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 903115108511653410}
   - component: {fileID: 1530995249706468274}
   - component: {fileID: 2541111465596685358}
+  - component: {fileID: 3864095354406166879}
   m_Layer: 0
   m_Name: Turtle Dance
   m_TagString: Untagged
@@ -102,3 +103,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3864095354406166879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4790332820550729828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39d8d70b6c0e3dc4d9e57d8ce742f159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenu: Main Menu

@@ -30,7 +30,7 @@ public class ProjectileScript : MonoBehaviour
         }
         if (collision.tag != "Enemy")
         {
-            //Debug.Log(collision.name);
+            Debug.Log(collision.name);
             Destroy(gameObject);
         }
     }
