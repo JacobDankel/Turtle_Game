@@ -1149,6 +1149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6456fba1eaa88274e9f5357d5408c018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelToRestart: Level_1
   player: {fileID: 491075493}
 --- !u!114 &357960989 stripped
 MonoBehaviour:

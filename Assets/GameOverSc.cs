@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class GameOverSc : MonoBehaviour
 {
-
+    public string levelToRestart;
     public GameObject player;
 
     public void RestartButton()
     {
-        SceneManager.LoadScene("Level_1");
+        SceneManager.LoadScene(levelToRestart);
 
     }
 
