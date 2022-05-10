@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
         currentHealth = maxHealth;
         healthbar.SetMaxHealth(maxHealth);
+        healthbar.SetHealth(currentHealth);
     }
 
     // Update is called once per frame
@@ -310,5 +311,19 @@ public class PlayerMovement : MonoBehaviour
         speed = UpgradeHolder.speed;
         maxHealth = UpgradeHolder.maxHealth;
         jumpTime = UpgradeHolder.jumpTime;
+    }
+
+    public void increaseHealth(float increaseValue)
+    {
+        currentHealth += increaseValue;
+        healthbar.SetHealth(currentHealth);
+    }
+
+    public void increaseMaxHealth(float increaseMaxValue)
+    {
+        maxHealth += increaseMaxValue;
+        healthbar.SetMaxHealth(maxHealth);
+        currentHealth += increaseMaxValue;
+        healthbar.SetHealth(currentHealth);
     }
 }

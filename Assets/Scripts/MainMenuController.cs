@@ -51,6 +51,8 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
     {
+        //Screen.SetResolution(1920, 1080, false);
+
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
@@ -162,6 +164,7 @@ public class MainMenuController : MonoBehaviour
 
             qualityDropdown.value = 1;
             QualitySettings.SetQualityLevel(1);
+
 
             fullScreenToggle.isOn = false;
             Screen.fullScreen = false;

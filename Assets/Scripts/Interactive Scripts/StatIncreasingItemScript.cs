@@ -17,8 +17,7 @@ public class StatIncreasingItemScript : Item
     {
         if (healthIncrease > 0)
         {
-            player.GetComponent<PlayerMovement>().maxHealth += healthIncrease;
-            player.GetComponent<PlayerMovement>().currentHealth += healthIncrease;
+            player.GetComponent<PlayerMovement>().increaseMaxHealth(healthIncrease);
         }
         if (damageIncrease > 0)
         {
@@ -36,7 +35,7 @@ public class StatIncreasingItemScript : Item
         {
             if (player.GetComponent<PlayerMovement>().currentHealth < player.GetComponent<PlayerMovement>().maxHealth)
             {
-                player.GetComponent<PlayerMovement>().currentHealth += healthRefill;
+                player.GetComponent<PlayerMovement>().increaseHealth(healthRefill);
             }
         }
     }
