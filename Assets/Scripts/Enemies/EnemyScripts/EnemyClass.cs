@@ -11,15 +11,19 @@ public class EnemyClass : MonoBehaviour
     [SerializeField]
     protected CapsuleCollider2D capCollider;
     [SerializeField]
+    protected Animator anim;
+    [SerializeField]
     protected LayerMask groundLayer, damageLayer, playerLayer, enemyLayer;
     [SerializeField]
     protected float speed = 2f, direction = 1f, health = 2f, viewRange = 10f;
     [SerializeField]
     protected float extraRaycastLength = 6f;// This is the extra length from the rigidbody that the raycast extends to detect the ground. It should be just below the rb in most cases.
 
+    public bool isMoving;
+
     public float damage = 1f;
 
-    
+    public bool isInPain;
 
     // Loot!
     [SerializeField]
@@ -30,11 +34,13 @@ public class EnemyClass : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         tran = GetComponent<Transform>();
         capCollider = GetComponent<CapsuleCollider2D>();
+        anim = GetComponent<Animator>();
     }
     
     protected void moveRB()
     {
         rb2d.velocity = new Vector2(direction * speed, rb2d.velocity.y);
+        isMoving = true;
     }
 
 
@@ -42,6 +48,8 @@ public class EnemyClass : MonoBehaviour
     {
         //Debug.Log("Taking fire!");
         health -= _damage;
+        anim.SetTrigger("In Pain");
+        SoundScript.play("Enemy Got Hit");
         if (health == 0)
         {
             if (lootDrop != null)
@@ -92,14 +100,22 @@ public class EnemyClass : MonoBehaviour
     protected void flip()
     {
         direction = -direction;
+
+        /*
         if (direction == 1)
         {
-            tran.Rotate(0f, 180f, 0f);
+           
+            tran.Rotate(tran.rotation.x, 180f, tran.rotation.z);
         }
         if (direction == -1)
         {
-            tran.Rotate(0f, 180f, 0f);
+            tran.Rotate(tran.rotation.x, 180f, tran.rotation.z);
+            //tran.Rotate(0f, , 0f);
         }
+        */
+        //tran.Rotate(0f, 180f, 0f);
+        //tran.Rotate.y
+        tran.Rotate(tran.rotation.x, 180f, tran.rotation.z);
     }
 
     protected bool seesPlayer()
@@ -115,14 +131,16 @@ public class EnemyClass : MonoBehaviour
 
     protected bool seesWall()
     {
-        Vector3 bottomOfCollider = new Vector3(capCollider.bounds.center.x, capCollider.bounds.center.y - capCollider.bounds.extents.y);
+        //Vector3 bottomOfCollider = new Vector3(capCollider.bounds.center.x, capCollider.bounds.center.y - capCollider.bounds.extents.y);
+        Vector3 rightExtent = capCollider.bounds.center + (transform.right * capCollider.bounds.extents.x);
         float range = capCollider.bounds.extents.x + .1f;
 
-        RaycastHit2D wallVisionLine = Physics2D.Raycast(bottomOfCollider, transform.right, range, groundLayer);
+        RaycastHit2D wallVisionLine = Physics2D.Raycast(rightExtent, transform.right, range, groundLayer);
+        Debug.DrawRay(rightExtent, transform.right, Color.red);
 
         if (wallVisionLine.collider)
         {
-            //Debug.Log("I see a wall");
+            //Debug.Log(gameObject + "I see a wall");
             return true;
         }
         else return false;
@@ -130,23 +148,25 @@ public class EnemyClass : MonoBehaviour
     
     protected bool seesOtherEnemy()
     {
-        Vector3 centerRightOfCollider = new Vector3(capCollider.bounds.center.x + capCollider.bounds.extents.x +.01f, capCollider.bounds.center.y);
-        Vector3 centerLeftOfCollider = new Vector3(capCollider.bounds.center.x - capCollider.bounds.extents.x - .01f, capCollider.bounds.center.y);
-        float range = .1f;
+        //Vector3 centerRightOfCollider = new Vector3(capCollider.bounds.center.x + capCollider.bounds.extents.x +.01f, capCollider.bounds.center.y);
+        //Vector3 centerLeftOfCollider = new Vector3(capCollider.bounds.center.x - capCollider.bounds.extents.x - .01f, capCollider.bounds.center.y);
+        Vector3 rightExtent = capCollider.bounds.center + (Vector3.right * capCollider.bounds.extents.x);
+        Vector3 leftExtent = capCollider.bounds.center + (Vector3.left * capCollider.bounds.extents.x);
+        float range = .3f;
 
-        RaycastHit2D enemyVisionLineRight = Physics2D.Raycast(centerRightOfCollider, transform.right, range, enemyLayer);
-        RaycastHit2D enemyVisionLineLeft = Physics2D.Raycast(centerLeftOfCollider, -transform.right, -range, enemyLayer);
-        Debug.DrawRay(centerRightOfCollider, (range*Vector2.right), Color.green);
-        Debug.DrawRay(centerLeftOfCollider, (range * Vector2.left), Color.green);
+        RaycastHit2D enemyVisionLineRight = Physics2D.Raycast(rightExtent, Vector2.right, range, enemyLayer);
+        RaycastHit2D enemyVisionLineLeft = Physics2D.Raycast(leftExtent, Vector2.left, -range, enemyLayer);
+        Debug.DrawRay(rightExtent, (range*Vector2.right), Color.blue);
+        Debug.DrawRay(leftExtent, (range * Vector2.left), Color.green);
 
         if (enemyVisionLineRight.collider && (enemyVisionLineRight.collider != gameObject.GetComponent<CapsuleCollider2D>()))
         {
-            //Debug.Log("I see another me");
+            //Debug.Log(gameObject + "I see another me");
             return true;
         }
         if (enemyVisionLineLeft.collider && (enemyVisionLineLeft.collider != gameObject.GetComponent<CapsuleCollider2D>()))
         {
-            //Debug.Log("I see another me");
+            //Debug.Log(gameObject + "I see another me");
             return true;
         }
 
@@ -159,5 +179,15 @@ public class EnemyClass : MonoBehaviour
         {
             collision.collider.SendMessage("takeDamage", damage);
         }
+    }
+
+    private void isInPainOn()
+    {
+        isInPain = true;
+    }
+    
+    private void isInPainOff()
+    {
+        isInPain = false;
     }
 }

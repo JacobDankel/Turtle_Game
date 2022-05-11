@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -40,26 +41,41 @@ public class PlayerMovement : MonoBehaviour
     public float weaponDamage = 1;
 
     private bool isAttacking;
-    private bool isInKockback;
+    public bool isInKnockback;
 
     public GameObject[] players;
+
+    public GameObject deathScreen;
+
+    public Text dialogueBox;
+    public Text healthdialogueBox;
+
     // Start is called before the first frame update
     private void Start()
     {
+        setUpgrades();
         //Grab references for rigidbody and animator from body 
         tran = GetComponent<Transform>();
         controller = GetComponent<Rigidbody2D>();
         capCollider = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
 
-        
+
+        dialogueBox.gameObject.SetActive(false); // initial bool is false
+        healthdialogueBox.gameObject.SetActive(false); // initial bool is false
+
+
         // For loading a new scene. spawnOnPoint is a function in this script.
+        /*
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += spawnOnPoint;
-
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        */
         inventory = new Inventory();
 
         currentHealth = maxHealth;
+        healthbar.SetMaxHealth(maxHealth);
+        healthbar.SetHealth(currentHealth);
     }
 
     // Update is called once per frame
@@ -91,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isAttacking = true;
             anim.SetTrigger("Attacking");
+            //SoundScript.play("Player Attack");
         }
         anim.SetFloat("Direction", direction );
 
@@ -99,46 +116,45 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("Grounded", true);
         }
         else anim.SetBool("Grounded", false);
-        /*
-        if (horizontalMove != 0)   
+        
+        if (isInKnockback == true)
         {
-            anim.SetBool("Moving", true);
+            //Debug.Log("here");
+            Invoke("isInKnockbackOff", .3f);
+            Invoke("isAttackingOff", .3f);
         }
-        else 
-            anim.SetBool("Moving", false);
 
-        if (horizontalMove > 0)
-        {
-            direction = 1;
-        }
-        if (horizontalMove < 0)
-        {
-            direction = -1;
-        }
-        if (IsGrounded())
-        {
-            //anim.SetBool("Grounded", true);
-        }
-        else //anim.SetBool("Grounded", false);
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            //Debug.Log("trying to jump");
-        }
-        */
         jumping();
         Interact();
         //anim.SetFloat("Speed", horizontalMove);
         //anim.SetFloat("Direction", direction);
     }
+    private void OnTriggerEnter2D(Collider2D collision) 
+    {
+        if (collision.gameObject.CompareTag("DialogueBox")) // compares tag if player collides with collider
+        {
+            dialogueBox.gameObject.SetActive(true); // enables text 
+        }
 
+        else if (collision.gameObject.CompareTag("HealthDialogueBox")) // compares tag if player collides with collider 
+        {
+            healthdialogueBox.gameObject.SetActive(true); // enables text
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        dialogueBox.gameObject.SetActive(false); // disables text
+        healthdialogueBox.gameObject.SetActive(false); // disables text
+    }
     private void FixedUpdate()
     {
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+
         if ((isAttacking && IsGrounded()))
         {
             controller.velocity = Vector2.zero;
         }
-        else if (!isInKockback) controller.velocity = new Vector2(horizontalMove * speed, controller.velocity.y);
+        else if (!isInKnockback) controller.velocity = new Vector2(horizontalMove * speed, controller.velocity.y);
     }
 
     public void pickUpItem(Item item)
@@ -175,6 +191,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             isJumping = true;
+            SoundScript.play("Player Jump");
             jumpTimeCounter = jumpTime;
             controller.velocity = Vector2.up * jumpForce * Time.deltaTime;
         }
@@ -214,7 +231,7 @@ public class PlayerMovement : MonoBehaviour
         else return false;
     }
 
-    private void takeDamage(float _damage)
+    public void takeDamage(float _damage)
     {
         anim.SetTrigger("Took Damage");
         currentHealth -= _damage;
@@ -230,9 +247,11 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log(controller.velocity);
         }
         //healthBar.SetHealth(currentHealth);
-
+        
         if (currentHealth <= 0)
         {
+            deathScreen.SetActive(true);
+
             Destroy(gameObject);
         }
     }
@@ -261,6 +280,7 @@ public class PlayerMovement : MonoBehaviour
     public void isAttackingOn()
     {
         isAttacking = true;
+        SoundScript.play("Player Attack");
         //Debug.Log("isAttacking is " + isAttacking);
     }
     public void isAttackingOff()
@@ -271,10 +291,39 @@ public class PlayerMovement : MonoBehaviour
 
     public void isInKnockbackOn()
     {
-        isInKockback = true;
+        isInKnockback = true;
+        SoundScript.play("Player Got Hit");
     }
-    public void isInKockbackOff()
+    public void isInKnockbackOff()
     {
-        isInKockback = false;
+        isInKnockback = false;
+    }
+
+    public void saveUpgrades()
+    {
+        UpgradeHolder.speed = speed;
+        UpgradeHolder.maxHealth = maxHealth;
+        UpgradeHolder.jumpTime = jumpTime;
+    }
+
+    public void setUpgrades()
+    {
+        speed = UpgradeHolder.speed;
+        maxHealth = UpgradeHolder.maxHealth;
+        jumpTime = UpgradeHolder.jumpTime;
+    }
+
+    public void increaseHealth(float increaseValue)
+    {
+        currentHealth += increaseValue;
+        healthbar.SetHealth(currentHealth);
+    }
+
+    public void increaseMaxHealth(float increaseMaxValue)
+    {
+        maxHealth += increaseMaxValue;
+        healthbar.SetMaxHealth(maxHealth);
+        currentHealth += increaseMaxValue;
+        healthbar.SetHealth(currentHealth);
     }
 }

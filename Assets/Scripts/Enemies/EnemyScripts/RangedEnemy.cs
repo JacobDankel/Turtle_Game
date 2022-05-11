@@ -25,6 +25,11 @@ public class RangedEnemy : EnemyClass
     {
         patrol();
         shoot();
+        if (isMoving == true)
+        {
+            anim.SetBool("Is Moving", true);
+        }
+        else anim.SetBool("Is Moving", false);
     }
 
     private void FixedUpdate()

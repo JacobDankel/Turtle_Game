@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Audio;
 
 public class MainMenuController : MonoBehaviour
 {
     [Header("Volume Settings")]
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
-    [SerializeField] private float defaultVolume = 1.0f;
+    [SerializeField] private float defaultVolume = -10;
+    [SerializeField] private AudioMixer audioMixer;
 
     [Header("Gameplay Settings")]
     [SerializeField] private TMP_Text controllerSenTextValue = null;
@@ -49,6 +51,8 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
     {
+        //Screen.SetResolution(1920, 1080, false);
+
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
@@ -70,10 +74,17 @@ public class MainMenuController : MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
     }
-
+    /*
     public void SetResoultion(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+    */
+
+    public void SetResoultion()
+    {
+        Resolution resolution = resolutions[resolutionDropdown.value];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
@@ -100,15 +111,9 @@ public class MainMenuController : MonoBehaviour
     }
     public void setVolume(float volume)
     {
-        AudioListener.volume = volume;
-        volumeTextValue.text = volume.ToString("0.0");
+        audioMixer.SetFloat("Volume", volume);
     }
 
-    public void VolumeApply()
-    {
-        PlayerPrefs.SetFloat("masterVolume", AudioListener.volume);
-        StartCoroutine(ConfirmationBox());
-    }
     public void SetControllerSen(float sensitivity)
     {
         mainControllerSen = Mathf.RoundToInt(sensitivity);
@@ -141,9 +146,15 @@ public class MainMenuController : MonoBehaviour
     {
         _isFullScreen = isFullScreen;
     }
+    /*
     public void SetQuality(int qualityIndex)
     {
         _qualityLevel = qualityIndex;
+    }
+    */
+    public void SetQuality()
+    {
+        _qualityLevel = qualityDropdown.value;
     }
     public void GraphicsApply()
     {
@@ -167,6 +178,7 @@ public class MainMenuController : MonoBehaviour
             qualityDropdown.value = 1;
             QualitySettings.SetQualityLevel(1);
 
+
             fullScreenToggle.isOn = false;
             Screen.fullScreen = false;
 
@@ -180,7 +192,6 @@ public class MainMenuController : MonoBehaviour
             AudioListener.volume = defaultVolume;
             volumeSlider.value = defaultVolume;
             volumeTextValue.text = defaultVolume.ToString("0.0");
-            VolumeApply();
         }
         if (MenuType == "Gameplay")
         {

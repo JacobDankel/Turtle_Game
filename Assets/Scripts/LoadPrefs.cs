@@ -47,12 +47,12 @@ public class LoadPrefs : MonoBehaviour
             {
                 menuController.ResetButton("Audio");
             }
-            if(PlayerPrefs.HasKey("masterQuality"))
+           /* if(PlayerPrefs.HasKey("masterQuality"))
             {
                 int localQuality = PlayerPrefs.GetInt("masterQuality");
                 qualityDropdown.value = localQuality;
                 QualitySettings.SetQualityLevel(localQuality);
-            }
+            }*/
             if(PlayerPrefs.HasKey("masterFullscreen"))
             {
                 int localFullScreen = PlayerPrefs.GetInt("masterFullscreen");
@@ -67,7 +67,7 @@ public class LoadPrefs : MonoBehaviour
                     Screen.fullScreen = false;
                     fullScreenToggle.isOn = false;
                 }
-                if(PlayerPrefs.HasKey("masterBrightness"))
+                /*if(PlayerPrefs.HasKey("masterBrightness"))
                 {
                     float localBrightness = PlayerPrefs.GetFloat("masterBrightness");
 
@@ -94,7 +94,7 @@ public class LoadPrefs : MonoBehaviour
                         invertYToggle.isOn = false;
                     }
                 }
-            }
+*/            }
         }
     }
 

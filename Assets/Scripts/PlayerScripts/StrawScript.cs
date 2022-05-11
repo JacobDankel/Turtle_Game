@@ -15,7 +15,7 @@ public class StrawScript : MonoBehaviour
     {
         damage = gameObject.GetComponentInParent<PlayerMovement>().weaponDamage;
         //Debug.Log("Hit Something");
-        if (collision.tag == "Enemy")
+        if (collision.tag == "Enemy" && collision.name != "Melee Trigger")
         {
             //Debug.Log("Hit Enemy");
             collision.SendMessage("takeDamage", damage);
