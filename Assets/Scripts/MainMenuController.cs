@@ -74,10 +74,17 @@ public class MainMenuController : MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
     }
-
+    /*
     public void SetResoultion(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+    */
+
+    public void SetResoultion()
+    {
+        Resolution resolution = resolutions[resolutionDropdown.value];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
@@ -139,9 +146,15 @@ public class MainMenuController : MonoBehaviour
     {
         _isFullScreen = isFullScreen;
     }
+    /*
     public void SetQuality(int qualityIndex)
     {
         _qualityLevel = qualityIndex;
+    }
+    */
+    public void SetQuality()
+    {
+        _qualityLevel = qualityDropdown.value;
     }
     public void GraphicsApply()
     {
