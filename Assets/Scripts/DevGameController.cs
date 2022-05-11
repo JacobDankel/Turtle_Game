@@ -20,6 +20,10 @@ public class DevGameController : MonoBehaviour
         {
             SceneManager.LoadScene("Level_2");
         }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SceneManager.LoadScene("Level_3");
+        }
 
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
