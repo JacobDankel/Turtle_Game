@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     public float weaponDamage = 1;
 
     private bool isAttacking;
-    public bool isInKockback;
+    public bool isInKnockback;
 
     public GameObject[] players;
 
@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
         currentHealth = maxHealth;
         healthbar.SetMaxHealth(maxHealth);
+        healthbar.SetHealth(currentHealth);
     }
 
     // Update is called once per frame
@@ -115,33 +116,14 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("Grounded", true);
         }
         else anim.SetBool("Grounded", false);
-        /*
-        if (horizontalMove != 0)   
+        
+        if (isInKnockback == true)
         {
-            anim.SetBool("Moving", true);
+            //Debug.Log("here");
+            Invoke("isInKnockbackOff", .3f);
+            Invoke("isAttackingOff", .3f);
         }
-        else 
-            anim.SetBool("Moving", false);
 
-        if (horizontalMove > 0)
-        {
-            direction = 1;
-        }
-        if (horizontalMove < 0)
-        {
-            direction = -1;
-        }
-        if (IsGrounded())
-        {
-            //anim.SetBool("Grounded", true);
-        }
-        else //anim.SetBool("Grounded", false);
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            //Debug.Log("trying to jump");
-        }
-        */
         jumping();
         Interact();
         //anim.SetFloat("Speed", horizontalMove);
@@ -172,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
         {
             controller.velocity = Vector2.zero;
         }
-        else if (!isInKockback) controller.velocity = new Vector2(horizontalMove * speed, controller.velocity.y);
+        else if (!isInKnockback) controller.velocity = new Vector2(horizontalMove * speed, controller.velocity.y);
     }
 
     public void pickUpItem(Item item)
@@ -309,12 +291,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void isInKnockbackOn()
     {
-        isInKockback = true;
+        isInKnockback = true;
         SoundScript.play("Player Got Hit");
     }
-    public void isInKockbackOff()
+    public void isInKnockbackOff()
     {
-        isInKockback = false;
+        isInKnockback = false;
     }
 
     public void saveUpgrades()
@@ -329,5 +311,19 @@ public class PlayerMovement : MonoBehaviour
         speed = UpgradeHolder.speed;
         maxHealth = UpgradeHolder.maxHealth;
         jumpTime = UpgradeHolder.jumpTime;
+    }
+
+    public void increaseHealth(float increaseValue)
+    {
+        currentHealth += increaseValue;
+        healthbar.SetHealth(currentHealth);
+    }
+
+    public void increaseMaxHealth(float increaseMaxValue)
+    {
+        maxHealth += increaseMaxValue;
+        healthbar.SetMaxHealth(maxHealth);
+        currentHealth += increaseMaxValue;
+        healthbar.SetHealth(currentHealth);
     }
 }

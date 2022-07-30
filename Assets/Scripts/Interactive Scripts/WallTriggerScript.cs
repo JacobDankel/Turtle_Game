@@ -20,6 +20,10 @@ public class WallTriggerScript : MonoBehaviour
         {
             wall.SetActive(true);
             Instantiate(boss, bossSpawnPoint.transform.position, bossSpawnPoint.transform.rotation);
+            if (wall.activeSelf == true)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -353,7 +353,7 @@ MonoBehaviour:
   currentHealth: 0
   healthbar: {fileID: 0}
   weaponDamage: 1
-  isInKockback: 0
+  isInKnockback: 0
   players: []
   deathScreen: {fileID: 0}
   dialogueBox: {fileID: 0}

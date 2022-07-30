@@ -1149,6 +1149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6456fba1eaa88274e9f5357d5408c018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelToRestart: Level_1
   player: {fileID: 491075493}
 --- !u!114 &357960989 stripped
 MonoBehaviour:
@@ -7224,7 +7225,8 @@ AudioSource:
   m_GameObject: {fileID: 1683669417}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: d0a51560523569645aee860e42028729,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 7251df028419874468c22e356e30287b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -8013,6 +8015,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sound Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 1912474462731182920, guid: 22851f4f4e5858c4db6a55eff59d554e,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: d0a51560523569645aee860e42028729,
+        type: 2}
     - target: {fileID: 1912474462731182922, guid: 22851f4f4e5858c4db6a55eff59d554e,
         type: 3}
       propertyPath: m_RootOrder
